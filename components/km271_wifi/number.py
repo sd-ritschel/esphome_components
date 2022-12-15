@@ -16,6 +16,7 @@ CODEOWNERS = ["@jensgraef"]
 
 TYPES = [
     "warm_water_temperature"
+    "heating_circuit_1_design_temperature"
 ]
 
 km271_ns = cg.esphome_ns.namespace("KM271")
@@ -29,6 +30,9 @@ CONFIG_SCHEMA = (
             cv.GenerateID(CONF_KM271_ID): cv.use_id(KM271),
             cv.Optional("warm_water_temperature"): number.NUMBER_SCHEMA.extend({
                 cv.GenerateID(): cv.declare_id(BuderusParamNumber),
+            }),
+            cv.Optional("heating_circuit_1_design_temperature"): number.NUMBER_SCHEMA.extend({
+                cv.GenerateID(): cv.declare_id(BuderusParamNumber),
             })
         }
     )
@@ -39,7 +43,10 @@ async def setup_conf(config, key, hub):
     if key in config:
         conf = config[key]
 
-        sens = await number.new_number(conf, min_value=30, max_value=60, step=1)
+        if key == "warm_water_temperature":
+            sens = await number.new_number(conf, min_value=30, max_value=60, step=1)
+        if key == "heating_circuit_1_design_temperature":
+            sens = await number.new_number(conf, min_value=30, max_value=90, step=1)
         cg.add(getattr(hub, f"set_{key}_number")(sens))
 
 

@@ -14,7 +14,8 @@ namespace KM271 {
 
 
 enum Buderus_R2017_ParameterId {
-    CFG_WW_Temperatur = 0x007e,
+    CFG_HK1_Auslegung   = 0x000E,
+    CFG_WW_Temperatur   = 0x007e,
     CFG_WW_Aufbereitung = 0x0085,
     BW1HK1    = 0x8000, //: "Betriebswerte 1 HK1"
     BW2HK1    = 0x8001, //: "Betriebswerte 2 HK1"

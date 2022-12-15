@@ -69,6 +69,7 @@ class KM271Component : public Component, public uart::UARTDevice {
 
   GENERATE_SWITCH_SETTER(warm_water_heating_auto_off, CFG_WW_Aufbereitung, 0);
   GENERATE_NUMBER_SETTER(warm_water_temperature, CFG_WW_Temperatur, 3);
+  GENERATE_NUMBER_SETTER(heating_circuit_1_design_temperature, CFG_HK1_Auslegung, 3);
 
   void setup();
   float get_setup_priority() const override;

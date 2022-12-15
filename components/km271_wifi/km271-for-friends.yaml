@@ -91,6 +91,9 @@ number:
   - platform: km271_wifi
     warm_water_temperature:
       name: "Warmwassersolltemperatur Tag"
+  - platform: km271_wifi
+    heating_circuit_1_design_temperature:
+      name: "Auslegungstemperatur"
 
 binary_sensor:
   - platform: km271_wifi
